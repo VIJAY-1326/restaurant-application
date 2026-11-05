@@ -1,61 +1,39 @@
-/* =========================================================
-   PREMIUM FOOD SIDEBAR
-========================================================= */
 
 .food-sidebar {
   position: fixed;
   top: 75px;
-  left: 0px;
-
+  left: 0;
   width: 300px;
-  height: 90vh;
+  height: calc(100vh - 75px);
+  height: calc(100dvh - 75px);
   padding: 20px;
-
   overflow-y: auto;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(25, 25, 25, 0.98),
-      rgba(13, 13, 13, 0.98)
-    );
-
+  overflow-x: hidden;
+  background: linear-gradient(145deg, rgba(25, 25, 25, 0.98), rgba(13, 13, 13, 0.98));
   border-right: 4px solid rgb(216, 155, 14);
-
-  box-shadow:
-    0 18px 50px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.025);
-
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.025);
   backdrop-filter: blur(18px);
-
+  -webkit-backdrop-filter: blur(18px);
   z-index: 900;
+  box-sizing: border-box;
 }
 
-/* subtle top highlight */
+.food-sidebar *,
+.food-sidebar *::before,
+.food-sidebar *::after {
+  box-sizing: border-box;
+}
 
 .food-sidebar::before {
   content: "";
-
   position: absolute;
   top: 0;
   left: 18px;
   right: 18px;
-
   height: 1px;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(215, 177, 104, 0.35),
-    transparent
-  );
-
+  background: linear-gradient(90deg, transparent, rgba(215, 177, 104, 0.35), transparent);
   pointer-events: none;
 }
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
 
 .food-sidebar::-webkit-scrollbar {
   width: 4px;
@@ -74,49 +52,30 @@
   background: #b99250;
 }
 
-/* =========================================================
-   SEARCH
-========================================================= */
-
 .sidebar-search {
+  width: 100%;
   height: 46px;
-
   display: flex;
   align-items: center;
-
   gap: 10px;
-
   padding: 0 13px;
-
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 11px;
-
   background: rgba(5, 5, 5, 0.72);
-
   color: #777777;
-
-  transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .sidebar-search svg {
   flex-shrink: 0;
-
   color: #686868;
-
   transition: color 0.3s ease;
 }
 
 .sidebar-search:focus-within {
   border-color: rgba(215, 177, 104, 0.65);
-
   background: rgba(8, 8, 8, 0.9);
-
-  box-shadow:
-    0 0 0 3px rgba(215, 177, 104, 0.05),
-    0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 3px rgba(215, 177, 104, 0.05), 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-search:focus-within svg {
@@ -125,26 +84,19 @@
 
 .sidebar-search input {
   width: 100%;
-
+  min-width: 0;
   border: none;
   outline: none;
-
   background: transparent;
-
   color: #f3f0e9;
-
   font-family: "DM Sans", sans-serif;
   font-size: 12px;
   font-weight: 500;
 }
 
 .sidebar-search input::placeholder {
-  color: #595959;
+  color: #777777;
 }
-
-/* =========================================================
-   SECTION
-========================================================= */
 
 .sidebar-section {
   margin-top: 27px;
@@ -158,195 +110,114 @@
 
 .sidebar-title::after {
   content: "";
-
   flex: 1;
-
   height: 1px;
-
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.07),
-    transparent
-  );
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.07), transparent);
 }
 
 .sidebar-title span {
-  color: #777777;
-
+  color: #999999;
   font-size: 9px;
   font-weight: 700;
-
   letter-spacing: 3px;
 }
 
-/* =========================================================
-   CATEGORY LIST
-========================================================= */
-
 .category-list {
   margin-top: 12px;
-
   display: flex;
   flex-direction: column;
-
-  gap: 3px;
+  gap: 4px;
 }
 
 .category-item {
   position: relative;
-
   width: 100%;
-
+  min-height: 42px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 11px 12px 11px 14px;
-
+  gap: 8px;
+  padding: 10px 12px 10px 14px;
   border: 1px solid transparent;
   border-radius: 10px;
-
   background: transparent;
-
   color: #858585;
-
   font-family: "DM Sans", sans-serif;
   font-size: 12px;
   font-weight: 500;
-
   text-align: left;
-
-  transition:
-    color 0.25s ease,
-    background 0.25s ease,
-    border-color 0.25s ease,
-    transform 0.25s ease;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .category-item::before {
   content: "";
-
   position: absolute;
-
   left: 0;
   top: 8px;
   bottom: 8px;
-
   width: 2px;
-
   border-radius: 3px;
-
   background: #d7b168;
-
   opacity: 0;
-
   transform: scaleY(0.4);
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .category-item svg {
   width: 15px;
   height: 15px;
-
-  color: #5e5e5e;
-
+  flex-shrink: 0;
+  color: #777777;
   opacity: 0;
-
   transform: translateX(-4px);
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    color 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
 }
-
-/* hover */
 
 .category-item:hover {
   color: #eeeeee;
-
   background: rgba(255, 255, 255, 0.035);
-
   border-color: rgba(255, 255, 255, 0.045);
-
   transform: translateX(3px);
 }
 
 .category-item:hover svg {
   opacity: 1;
-
   transform: translateX(0);
-
-  color: #a9a9a9;
 }
-
-/* active */
 
 .category-item.active {
   color: #ead8b4;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(215, 177, 104, 0.12),
-      rgba(215, 177, 104, 0.035)
-    );
-
+  background: linear-gradient(90deg, rgba(215, 177, 104, 0.12), rgba(215, 177, 104, 0.035));
   border-color: rgba(215, 177, 104, 0.13);
-
   font-weight: 600;
 }
 
 .category-item.active::before {
   opacity: 1;
-
   transform: scaleY(1);
 }
 
 .category-item.active svg {
   opacity: 1;
-
   transform: translateX(0);
-
   color: #d7b168;
 }
 
-/* =========================================================
-   DIVIDER
-========================================================= */
-
 .sidebar-divider {
   height: 1px;
-
   margin: 25px 0;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.08),
-      transparent
-    );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
 }
-
-/* =========================================================
-   FILTER HEADING
-========================================================= */
 
 .sidebar-heading {
   display: flex;
   align-items: center;
-
   gap: 9px;
-
   color: #d4d4d4;
-
   font-size: 10px;
   font-weight: 700;
-
   letter-spacing: 2.5px;
 }
 
@@ -354,99 +225,59 @@
   color: #b99250;
 }
 
-/* =========================================================
-   FILTER GROUP
-========================================================= */
-
 .filter-group {
   margin-top: 20px;
 }
 
 .filter-group h4 {
-  margin-bottom: 13px;
-
-  color: #666666;
-
+  margin: 0 0 13px;
+  color: #888888;
   font-size: 9px;
   font-weight: 700;
-
   letter-spacing: 1.8px;
-
   text-transform: uppercase;
 }
 
-/* =========================================================
-   FILTER OPTION
-========================================================= */
-
 .filter-option {
   position: relative;
-
   display: flex;
   align-items: center;
-
   gap: 9px;
-
-  min-height: 34px;
-
+  min-height: 40px;
   margin-bottom: 5px;
-
-  padding: 5px 7px;
-
+  padding: 6px 7px;
   border-radius: 8px;
-
-  color: #858585;
-
+  color: #999999;
   font-size: 11px;
   font-weight: 500;
-
   cursor: pointer;
-
-  transition:
-    color 0.25s ease,
-    background 0.25s ease;
+  transition: color 0.25s ease, background 0.25s ease;
 }
 
 .filter-option:hover {
   color: #dddddd;
-
   background: rgba(255, 255, 255, 0.035);
 }
 
 .filter-option input {
   position: absolute;
-
   opacity: 0;
-
   pointer-events: none;
 }
 
-/* =========================================================
-   CUSTOM RADIO
-========================================================= */
-
 .custom-radio {
   position: relative;
-
   flex-shrink: 0;
-
-  width: 15px;
-  height: 15px;
-
-  border: 1px solid #454545;
-
+  width: 16px;
+  height: 16px;
+  border: 1px solid #555555;
   border-radius: 50%;
-
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .filter-option input:checked + .custom-radio {
   border: 4px solid #d7b168;
-
-  box-shadow:
-    0 0 0 2px rgba(215, 177, 104, 0.08);
+  box-shadow: 0 0 0 2px rgba(215, 177, 104, 0.08);
 }
 
 .custom-radio.veg {
@@ -459,93 +290,169 @@
 
 .filter-option input:checked + .custom-radio.veg {
   border-color: #5eaa6a;
-
-  box-shadow:
-    0 0 0 2px rgba(94, 170, 106, 0.08);
 }
 
 .filter-option input:checked + .custom-radio.nonveg {
   border-color: #d05b50;
-
-  box-shadow:
-    0 0 0 2px rgba(208, 91, 80, 0.08);
 }
-
-/* icons */
 
 .filter-option svg {
   width: 14px;
   height: 14px;
-
-  color: #696969;
-
-  transition: color 0.25s ease;
+  flex-shrink: 0;
+  color: #888888;
 }
 
-.filter-option:hover svg {
-  color: #aaaaaa;
-}
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1100px) {
+@media (min-width: 1025px) and (max-width: 1250px) {
   .food-sidebar {
-    left: 20px;
-
-    width: 245px;
+    width: 270px;
+    padding: 18px;
   }
 }
 
-/* =========================================================
-   MOBILE / TABLET
-========================================================= */
-
-@media (max-width: 900px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .food-sidebar {
     position: relative;
-
     top: auto;
     left: auto;
-
     width: 100%;
     height: auto;
-
     max-height: none;
-
     margin-bottom: 25px;
-
+    padding: 22px;
     overflow: visible;
-
-    border-radius: 18px;
-  }
-
-  .category-list {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 5px;
-  }
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 500px) {
-  .food-sidebar {
-    padding: 16px;
-
+    border: 1px solid rgba(216, 155, 14, 0.55);
     border-radius: 16px;
   }
 
   .category-list {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
   }
 
   .category-item {
-    padding: 10px 12px;
+    min-width: 0;
+    padding: 11px;
+  }
+
+  .category-item svg {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sidebar-section {
+    margin-top: 22px;
+  }
+
+  .filter-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+
+  .filter-group h4 {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .filter-option {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 767px) {
+  .food-sidebar {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    margin: 0 0 22px;
+    padding: 17px;
+    overflow: visible;
+    border: 1px solid rgba(216, 155, 14, 0.5);
+    border-radius: 15px;
+  }
+
+  .sidebar-section {
+    margin-top: 21px;
+  }
+
+  .category-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .category-item {
+    min-width: 0;
+    min-height: 42px;
+    padding: 9px 10px;
+    font-size: 11px;
+    border-color: rgba(255, 255, 255, 0.045);
+    background: rgba(255, 255, 255, 0.018);
+  }
+
+  .category-item svg {
+    width: 13px;
+    height: 13px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .category-item:hover {
+    transform: none;
+  }
+
+  .sidebar-divider {
+    margin: 20px 0;
+  }
+
+  .filter-group {
+    margin-top: 15px;
+  }
+
+  .filter-group h4 {
+    margin-bottom: 8px;
+  }
+
+  .filter-option {
+    min-height: 42px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .food-sidebar {
+    padding: 13px;
+  }
+
+  .category-list {
+    gap: 5px;
+  }
+
+  .category-item {
+    padding: 9px 7px;
+    font-size: 10px;
+  }
+
+  .sidebar-search {
+    height: 43px;
+  }
+
+  .sidebar-section {
+    margin-top: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .food-sidebar *,
+  .food-sidebar *::before,
+  .food-sidebar *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }

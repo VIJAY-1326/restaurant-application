@@ -1,3 +1,4 @@
+
 import {
   CheckCircle2,
   PackageCheck,
@@ -6,8 +7,6 @@ import {
   Home,
   Clock3,
 } from "lucide-react";
-// framer-motion
-
 
 import {
   Link,
@@ -21,22 +20,15 @@ import "./OrderSuccess.css";
 function OrderSuccess() {
   const { orderId } = useParams();
 
-  const {
-    getOrderById,
-  } = useOrders();
+  const { getOrderById } = useOrders();
 
-  const order =
-    getOrderById(orderId);
+  const order = getOrderById(orderId);
 
   if (!order) {
     return (
       <div className="order-success-page">
-
         <div className="order-not-found">
-
-          <h1>
-            Order Not Found
-          </h1>
+          <h1>Order Not Found</h1>
 
           <p>
             We couldn't find this order.
@@ -49,18 +41,14 @@ function OrderSuccess() {
             My Orders
             <ArrowRight size={17} />
           </Link>
-
         </div>
-
       </div>
     );
   }
 
   return (
     <div className="order-success-page">
-
       <div className="order-success-container">
-
         <div className="success-icon">
           <CheckCircle2 size={48} />
         </div>
@@ -81,175 +69,112 @@ function OrderSuccess() {
         </p>
 
         <div className="order-number-box">
-
-          <span>
-            ORDER NUMBER
-          </span>
+          <span>ORDER NUMBER</span>
 
           <strong>
             {order.orderNumber}
           </strong>
-
         </div>
 
-        {/* ORDER CARD */}
-
         <div className="order-details-card">
-
           <div className="order-details-header">
-
             <div>
-              <span>
-                ORDER DETAILS
-              </span>
-
-              <h2>
-                Your Order
-              </h2>
+              <span>ORDER DETAILS</span>
+              <h2>Your Order</h2>
             </div>
 
             <div className="order-status">
               {order.status}
             </div>
-
           </div>
 
           <div className="ordered-items">
-
             {order.items.map((item) => (
-
               <div
                 className="ordered-item"
                 key={item.id}
               >
-
                 <div className="ordered-item-image">
-
                   <img
                     src={item.image}
                     alt={item.name}
+                    loading="lazy"
                   />
-
                 </div>
 
                 <div className="ordered-item-info">
-
-                  <strong>
-                    {item.name}
-                  </strong>
+                  <strong>{item.name}</strong>
 
                   <span>
-                    ₹{item.price} ×{" "}
-                    {item.quantity}
+                    ₹{item.price} × {item.quantity}
                   </span>
-
                 </div>
 
                 <strong className="ordered-item-total">
                   ₹{item.subtotal}
                 </strong>
-
               </div>
-
             ))}
-
           </div>
 
           <div className="order-summary">
-
             <div>
-              <span>
-                Payment
-              </span>
-
-              <strong>
-                {order.paymentMethod}
-              </strong>
+              <span>Payment</span>
+              <strong>{order.paymentMethod}</strong>
             </div>
 
             <div>
-              <span>
-                Total Amount
-              </span>
-
-              <strong>
-                ₹{order.totalAmount}
-              </strong>
+              <span>Total Amount</span>
+              <strong>₹{order.totalAmount}</strong>
             </div>
-
           </div>
 
           <div className="delivery-details">
-
-            <span>
-              DELIVERY ADDRESS
-            </span>
+            <span>DELIVERY ADDRESS</span>
 
             <p>
               {order.address?.addressLine}
               <br />
-
               {order.address?.city},{" "}
               {order.address?.state} -{" "}
               {order.address?.pincode}
             </p>
-
           </div>
-
         </div>
 
-        {/* STATUS INFO */}
-
         <div className="success-info-grid">
-
           <div className="success-info-card">
-
             <div className="success-info-icon">
               <PackageCheck size={21} />
             </div>
 
             <div>
-
-              <strong>
-                Order Confirmed
-              </strong>
+              <strong>Order Confirmed</strong>
 
               <p>
                 Your order has been
                 successfully confirmed.
               </p>
-
             </div>
-
           </div>
 
           <div className="success-info-card">
-
             <div className="success-info-icon">
               <Clock3 size={21} />
             </div>
 
             <div>
-
-              <strong>
-                Preparing Your Food
-              </strong>
+              <strong>Preparing Your Food</strong>
 
               <p>
                 Our chefs are preparing
                 your dishes.
               </p>
-
             </div>
-
           </div>
-
         </div>
 
-        {/* BUTTONS */}
-
         <div className="success-actions">
-
           <Link
             to="/orders"
             className="success-primary-button"
@@ -273,11 +198,8 @@ function OrderSuccess() {
             <Home size={16} />
             Home
           </Link>
-
         </div>
-
       </div>
-
     </div>
   );
 }

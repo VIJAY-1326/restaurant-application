@@ -1,3 +1,4 @@
+
 import {
   UserRound,
   Mail,
@@ -8,6 +9,7 @@ import {
   ArrowRight,
   UtensilsCrossed,
 } from "lucide-react";
+
 import { useAuth } from "../Context/AuthContext";
 
 import {
@@ -40,10 +42,7 @@ function Register() {
   });
 
   const handleChange = (event) => {
-    const {
-      name,
-      value,
-    } = event.target;
+    const { name, value } = event.target;
 
     setFormData((current) => ({
       ...current,
@@ -57,15 +56,13 @@ function Register() {
     event.preventDefault();
 
     if (
-      !formData.name ||
-      !formData.email ||
-      !formData.phone ||
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.phone.trim() ||
       !formData.password ||
       !formData.confirmPassword
     ) {
-      setError(
-        "Please fill in all fields."
-      );
+      setError("Please fill in all fields.");
       return;
     }
 
@@ -80,16 +77,9 @@ function Register() {
       formData.password !==
       formData.confirmPassword
     ) {
-      setError(
-        "Passwords do not match."
-      );
+      setError("Passwords do not match.");
       return;
     }
-
-    /*
-      Backend registration will be connected later.
-      For now we redirect to login.
-    */
 
     const newUser = {
       id: Date.now(),
@@ -105,15 +95,8 @@ function Register() {
 
   return (
     <div className="register-page">
-
       <div className="register-container">
-
-        {/* =========================
-            LEFT BRAND
-        ========================== */}
-
         <div className="register-brand">
-
           <div className="register-brand-icon">
             <UtensilsCrossed size={27} />
           </div>
@@ -139,60 +122,40 @@ function Register() {
           <small>
             Premium Dining Experience
           </small>
-
         </div>
 
-        {/* =========================
-            REGISTER CARD
-        ========================== */}
-
         <div className="register-card">
-
           <div className="register-card-header">
+            <span>CREATE ACCOUNT</span>
 
-            <span>
-              CREATE ACCOUNT
-            </span>
-
-            <h2>
-              Get Started
-            </h2>
+            <h2>Get Started</h2>
 
             <p>
               Create your account and start
               exploring our menu.
             </p>
-
           </div>
 
-          {/* ERROR */}
-
           {error && (
-            <div className="register-error">
+            <div className="register-error" role="alert">
               {error}
             </div>
           )}
-
-          {/* FORM */}
 
           <form
             className="register-form"
             onSubmit={handleSubmit}
           >
-
-            {/* NAME */}
-
             <div className="register-field">
-
-              <label>
+              <label htmlFor="register-name">
                 Full Name
               </label>
 
               <div className="register-input-wrapper">
-
                 <UserRound size={17} />
 
                 <input
+                  id="register-name"
                   type="text"
                   name="name"
                   placeholder="Enter your full name"
@@ -200,26 +163,20 @@ function Register() {
                   onChange={handleChange}
                   autoComplete="name"
                 />
-
               </div>
-
             </div>
 
-            {/* EMAIL + PHONE */}
-
             <div className="register-two-columns">
-
               <div className="register-field">
-
-                <label>
+                <label htmlFor="register-email">
                   Email Address
                 </label>
 
                 <div className="register-input-wrapper">
-
                   <Mail size={17} />
 
                   <input
+                    id="register-email"
                     type="email"
                     name="email"
                     placeholder="Your email"
@@ -227,22 +184,19 @@ function Register() {
                     onChange={handleChange}
                     autoComplete="email"
                   />
-
                 </div>
-
               </div>
 
               <div className="register-field">
-
-                <label>
+                <label htmlFor="register-phone">
                   Phone Number
                 </label>
 
                 <div className="register-input-wrapper">
-
                   <Phone size={17} />
 
                   <input
+                    id="register-phone"
                     type="tel"
                     name="phone"
                     placeholder="Your phone"
@@ -250,31 +204,21 @@ function Register() {
                     onChange={handleChange}
                     autoComplete="tel"
                   />
-
                 </div>
-
               </div>
-
             </div>
 
-            {/* PASSWORD */}
-
             <div className="register-field">
-
-              <label>
+              <label htmlFor="register-password">
                 Password
               </label>
 
               <div className="register-input-wrapper">
-
                 <Lock size={17} />
 
                 <input
-                  type={
-                    showPassword
-                      ? "text"
-                      : "password"
-                  }
+                  id="register-password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Create a password"
                   value={formData.password}
@@ -286,9 +230,12 @@ function Register() {
                   type="button"
                   className="register-password-toggle"
                   onClick={() =>
-                    setShowPassword(
-                      !showPassword
-                    )
+                    setShowPassword((current) => !current)
+                  }
+                  aria-label={
+                    showPassword
+                      ? "Hide password"
+                      : "Show password"
                   }
                 >
                   {showPassword ? (
@@ -297,24 +244,19 @@ function Register() {
                     <Eye size={17} />
                   )}
                 </button>
-
               </div>
-
             </div>
 
-            {/* CONFIRM PASSWORD */}
-
             <div className="register-field">
-
-              <label>
+              <label htmlFor="register-confirm-password">
                 Confirm Password
               </label>
 
               <div className="register-input-wrapper">
-
                 <Lock size={17} />
 
                 <input
+                  id="register-confirm-password"
                   type={
                     showConfirmPassword
                       ? "text"
@@ -322,9 +264,7 @@ function Register() {
                   }
                   name="confirmPassword"
                   placeholder="Confirm your password"
-                  value={
-                    formData.confirmPassword
-                  }
+                  value={formData.confirmPassword}
                   onChange={handleChange}
                   autoComplete="new-password"
                 />
@@ -334,8 +274,13 @@ function Register() {
                   className="register-password-toggle"
                   onClick={() =>
                     setShowConfirmPassword(
-                      !showConfirmPassword
+                      (current) => !current
                     )
+                  }
+                  aria-label={
+                    showConfirmPassword
+                      ? "Hide confirm password"
+                      : "Show confirm password"
                   }
                 >
                   {showConfirmPassword ? (
@@ -344,30 +289,18 @@ function Register() {
                     <Eye size={17} />
                   )}
                 </button>
-
               </div>
-
             </div>
 
-            {/* TERMS */}
-
             <label className="register-terms">
-
-              <input
-                type="checkbox"
-                required
-              />
+              <input type="checkbox" required />
 
               <span className="register-check-box" />
 
               <span>
-                I agree to the Terms &
-                Conditions
+                I agree to the Terms & Conditions
               </span>
-
             </label>
-
-            {/* BUTTON */}
 
             <button
               type="submit"
@@ -376,27 +309,17 @@ function Register() {
               Create Account
               <ArrowRight size={17} />
             </button>
-
           </form>
 
-          {/* LOGIN */}
-
           <div className="register-login">
-
-            <span>
-              Already have an account?
-            </span>
+            <span>Already have an account?</span>
 
             <Link to="/login">
               Sign In
             </Link>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }

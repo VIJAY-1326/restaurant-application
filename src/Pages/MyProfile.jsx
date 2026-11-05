@@ -1,3 +1,4 @@
+
 import {
   UserRound,
   Mail,
@@ -6,8 +7,6 @@ import {
   LogOut,
   ArrowRight,
 } from "lucide-react";
-// framer-motion
-
 
 import {
   Link,
@@ -35,14 +34,10 @@ function MyProfile() {
   if (!isLoggedIn) {
     return (
       <div className="profile-page">
-
         <div className="profile-login-box">
-
           <UserRound size={45} />
 
-          <h1>
-            Login Required
-          </h1>
+          <h1>Login Required</h1>
 
           <p>
             Please login to view your profile.
@@ -55,23 +50,20 @@ function MyProfile() {
             Sign In
             <ArrowRight size={17} />
           </Link>
-
         </div>
-
       </div>
     );
   }
 
-  const userOrders =
-    getUserOrders(user?.id, user?.email);
+  const userOrders = getUserOrders(
+    user?.id,
+    user?.email
+  );
 
   const initials =
     user?.name
       ?.split(" ")
-      .map(
-        (word) =>
-          word.charAt(0)
-      )
+      .map((word) => word.charAt(0))
       .join("")
       .slice(0, 2)
       .toUpperCase() || "U";
@@ -83,77 +75,50 @@ function MyProfile() {
 
   return (
     <div className="profile-page">
-
       <div className="profile-container">
-
         <div className="profile-heading">
+          <span>ACCOUNT</span>
 
-          <span>
-            ACCOUNT
-          </span>
-
-          <h1>
-            My Profile
-          </h1>
+          <h1>My Profile</h1>
 
           <p>
             Manage your account details
             and restaurant activity.
           </p>
-
         </div>
 
         <div className="profile-grid">
-
-          {/* PROFILE CARD */}
-
           <div className="profile-main-card">
-
             <div className="profile-avatar">
               {initials}
             </div>
 
-            <h2>
-              {user.name}
-            </h2>
+            <h2>{user?.name}</h2>
 
             <span className="profile-role">
-              {user.role || "CUSTOMER"}
+              {user?.role || "CUSTOMER"}
             </span>
 
             <div className="profile-divider" />
 
             <div className="profile-detail">
-
               <Mail size={17} />
 
               <div>
-                <small>
-                  Email Address
-                </small>
-
-                <strong>
-                  {user.email}
-                </strong>
+                <small>Email Address</small>
+                <strong>{user?.email}</strong>
               </div>
-
             </div>
 
             <div className="profile-detail">
-
               <Phone size={17} />
 
               <div>
-                <small>
-                  Phone Number
-                </small>
-
+                <small>Phone Number</small>
                 <strong>
-                  {user.phone ||
-                    "Not added"}
+                  {user?.phone || "Not added"}
                 </strong>
               </div>
-
             </div>
 
             <button
@@ -164,29 +129,18 @@ function MyProfile() {
               <LogOut size={16} />
               Logout
             </button>
-
           </div>
 
-          {/* ACTIVITY */}
-
           <div className="profile-activity">
-
             <div className="profile-activity-card">
-
               <div className="activity-icon">
                 <Package size={21} />
               </div>
 
               <div>
-                <span>
-                  TOTAL ORDERS
-                </span>
-
-                <strong>
-                  {userOrders.length}
-                </strong>
+                <span>TOTAL ORDERS</span>
+                <strong>{userOrders.length}</strong>
               </div>
-
             </div>
 
             <Link
@@ -197,27 +151,19 @@ function MyProfile() {
                 <Package size={18} />
 
                 <div>
-                  <strong>
-                    My Orders
-                  </strong>
+                  <strong>My Orders</strong>
 
                   <span>
-                    View your complete
-                    order history
+                    View your complete order history
                   </span>
                 </div>
               </div>
 
               <ArrowRight size={17} />
-
             </Link>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }

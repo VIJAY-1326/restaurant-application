@@ -1,6 +1,6 @@
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import {
   MapPin,
   Phone,
@@ -9,16 +9,11 @@ import {
   Send,
   MessageCircle,
 } from "lucide-react";
-
 import "./Contact.css";
-
-/* =========================================================
-   ANIMATION SETTINGS
-========================================================= */
 
 const viewportSettings = {
   amount: 0.2,
-  once: false,
+  once: true,
 };
 
 const smoothTransition = {
@@ -40,7 +35,7 @@ const heroContent = {
 const revealUp = {
   hidden: {
     opacity: 0,
-    y: 55,
+    y: 45,
   },
   visible: {
     opacity: 1,
@@ -51,7 +46,7 @@ const revealUp = {
 const revealLeft = {
   hidden: {
     opacity: 0,
-    x: -70,
+    x: -50,
   },
   visible: {
     opacity: 1,
@@ -62,23 +57,11 @@ const revealLeft = {
 const revealRight = {
   hidden: {
     opacity: 0,
-    x: 70,
+    x: 50,
   },
   visible: {
     opacity: 1,
     x: 0,
-  },
-};
-
-// eslint-disable-next-line no-unused-vars
-const revealScale = {
-  hidden: {
-    opacity: 0,
-    scale: 0.94,
-  },
-  visible: {
-    opacity: 1,
-    scale: 1,
   },
 };
 
@@ -107,10 +90,6 @@ const detailCard = {
     },
   },
 };
-
-/* =========================================================
-   COMPONENT
-========================================================= */
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -145,20 +124,15 @@ function Contact() {
       message: "",
     });
 
-    setTimeout(() => {
+    window.setTimeout(() => {
       setSubmitted(false);
     }, 4000);
   };
 
   return (
     <div className="contact-page">
-
-      {/* =====================================================
-          HERO
-      ====================================================== */}
-
       <section className="contact-hero">
-        <div className="contact-hero-overlay"></div>
+        <div className="contact-hero-overlay" />
 
         <motion.div
           className="contact-hero-content"
@@ -174,7 +148,6 @@ function Contact() {
             transition={{
               duration: 0.6,
               delay: 0.1,
-              ease: [0.22, 1, 0.36, 1],
             }}
           >
             WE'D LOVE TO HEAR FROM YOU
@@ -186,7 +159,6 @@ function Contact() {
             transition={{
               duration: 0.8,
               delay: 0.18,
-              ease: [0.22, 1, 0.36, 1],
             }}
           >
             Let's Start a
@@ -199,7 +171,6 @@ function Contact() {
             transition={{
               duration: 0.7,
               delay: 0.3,
-              ease: [0.22, 1, 0.36, 1],
             }}
           >
             Have a question, suggestion, or simply want to say
@@ -208,17 +179,8 @@ function Contact() {
         </motion.div>
       </section>
 
-      {/* =====================================================
-          MAIN CONTACT SECTION
-      ====================================================== */}
-
       <section className="contact-section">
         <div className="contact-container">
-
-          {/* =================================================
-              LEFT SIDE
-          ================================================== */}
-
           <motion.div
             className="contact-info"
             variants={revealLeft}
@@ -235,9 +197,7 @@ function Contact() {
               viewport={viewportSettings}
               transition={smoothTransition}
             >
-              <span>
-                GET IN TOUCH
-              </span>
+              <span>GET IN TOUCH</span>
 
               <h2>
                 We're Here
@@ -251,8 +211,6 @@ function Contact() {
               </p>
             </motion.div>
 
-            {/* CONTACT DETAILS */}
-
             <motion.div
               className="contact-details"
               variants={detailContainer}
@@ -260,28 +218,20 @@ function Contact() {
               whileInView="visible"
               viewport={viewportSettings}
             >
-
-              {/* ADDRESS */}
-
               <motion.div
                 className="contact-detail-card"
                 variants={detailCard}
                 whileHover={{
-                  y: -6,
-                  transition: {
-                    duration: 0.25,
-                    ease: "easeOut",
-                  },
+                  y: -5,
+                  transition: { duration: 0.25 },
                 }}
               >
                 <div className="contact-icon">
                   <MapPin size={21} />
                 </div>
 
-                <div>
-                  <h3>
-                    Visit Us
-                  </h3>
+                <div className="contact-detail-content">
+                  <h3>Visit Us</h3>
 
                   <p>
                     24 Luxury Avenue
@@ -291,27 +241,20 @@ function Contact() {
                 </div>
               </motion.div>
 
-              {/* PHONE */}
-
               <motion.div
                 className="contact-detail-card"
                 variants={detailCard}
                 whileHover={{
-                  y: -6,
-                  transition: {
-                    duration: 0.25,
-                    ease: "easeOut",
-                  },
+                  y: -5,
+                  transition: { duration: 0.25 },
                 }}
               >
                 <div className="contact-icon">
                   <Phone size={21} />
                 </div>
 
-                <div>
-                  <h3>
-                    Call Us
-                  </h3>
+                <div className="contact-detail-content">
+                  <h3>Call Us</h3>
 
                   <p>
                     +91 98765 43210
@@ -321,27 +264,20 @@ function Contact() {
                 </div>
               </motion.div>
 
-              {/* EMAIL */}
-
               <motion.div
                 className="contact-detail-card"
                 variants={detailCard}
                 whileHover={{
-                  y: -6,
-                  transition: {
-                    duration: 0.25,
-                    ease: "easeOut",
-                  },
+                  y: -5,
+                  transition: { duration: 0.25 },
                 }}
               >
                 <div className="contact-icon">
                   <Mail size={21} />
                 </div>
 
-                <div>
-                  <h3>
-                    Email Us
-                  </h3>
+                <div className="contact-detail-content">
+                  <h3>Email Us</h3>
 
                   <p>
                     hello@restaura.com
@@ -351,27 +287,20 @@ function Contact() {
                 </div>
               </motion.div>
 
-              {/* HOURS */}
-
               <motion.div
                 className="contact-detail-card"
                 variants={detailCard}
                 whileHover={{
-                  y: -6,
-                  transition: {
-                    duration: 0.25,
-                    ease: "easeOut",
-                  },
+                  y: -5,
+                  transition: { duration: 0.25 },
                 }}
               >
                 <div className="contact-icon">
                   <Clock size={21} />
                 </div>
 
-                <div>
-                  <h3>
-                    Opening Hours
-                  </h3>
+                <div className="contact-detail-content">
+                  <h3>Opening Hours</h3>
 
                   <p>
                     Monday - Sunday
@@ -380,10 +309,7 @@ function Contact() {
                   </p>
                 </div>
               </motion.div>
-
             </motion.div>
-
-            {/* SOCIAL */}
 
             <motion.div
               className="contact-social"
@@ -396,54 +322,29 @@ function Contact() {
                 delay: 0.1,
               }}
             >
-              <h3>
-                Follow Our Journey
-              </h3>
+              <h3>Follow Our Journey</h3>
 
               <div className="social-links">
-
                 <motion.a
-                  href="#"
-                  aria-label="Social Media"
-                  whileHover={{
-                    y: -5,
-                    scale: 1.05,
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                  }}
-                  transition={{
-                    duration: 0.2,
-                  }}
+                  href="mailto:hello@restaura.com"
+                  aria-label="Email Restaura"
+                  whileHover={{ y: -5, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <MessageCircle size={20} />
                 </motion.a>
 
                 <motion.a
-                  href="#"
-                  aria-label="Contact Us"
-                  whileHover={{
-                    y: -5,
-                    scale: 1.05,
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                  }}
-                  transition={{
-                    duration: 0.2,
-                  }}
+                  href="mailto:support@restaura.com"
+                  aria-label="Contact Restaura"
+                  whileHover={{ y: -5, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Mail size={20} />
                 </motion.a>
-
               </div>
             </motion.div>
-
           </motion.div>
-
-          {/* =================================================
-              RIGHT SIDE FORM
-          ================================================== */}
 
           <motion.div
             className="contact-form-wrapper"
@@ -464,9 +365,7 @@ function Contact() {
               viewport={viewportSettings}
               transition={smoothTransition}
             >
-              <span>
-                SEND A MESSAGE
-              </span>
+              <span>SEND A MESSAGE</span>
 
               <h2>
                 Tell Us
@@ -479,14 +378,11 @@ function Contact() {
               </p>
             </motion.div>
 
-            {/* =================================================
-                SUCCESS MESSAGE
-            ================================================== */}
-
             <AnimatePresence>
               {submitted && (
                 <motion.div
                   className="contact-success"
+                  role="status"
                   initial={{
                     opacity: 0,
                     y: -20,
@@ -517,7 +413,6 @@ function Contact() {
                     transition={{
                       duration: 0.5,
                       delay: 0.1,
-                      ease: [0.22, 1, 0.36, 1],
                     }}
                   >
                     ✓
@@ -537,10 +432,6 @@ function Contact() {
               )}
             </AnimatePresence>
 
-            {/* =================================================
-                FORM
-            ================================================== */}
-
             <motion.form
               className="contact-form"
               onSubmit={handleSubmit}
@@ -556,26 +447,23 @@ function Contact() {
                 },
               }}
             >
-
-              {/* ROW 1 */}
-
               <div className="form-row">
-
                 <motion.div
                   className="form-group"
                   variants={revealUp}
                 >
-                  <label htmlFor="name">
+                  <label htmlFor="contact-name">
                     Your Name
                   </label>
 
                   <input
-                    id="name"
+                    id="contact-name"
                     type="text"
                     name="name"
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={handleChange}
+                    autoComplete="name"
                     required
                   />
                 </motion.div>
@@ -584,42 +472,40 @@ function Contact() {
                   className="form-group"
                   variants={revealUp}
                 >
-                  <label htmlFor="email">
+                  <label htmlFor="contact-email">
                     Email Address
                   </label>
 
                   <input
-                    id="email"
+                    id="contact-email"
                     type="email"
                     name="email"
                     placeholder="Enter your email"
                     value={formData.email}
                     onChange={handleChange}
+                    autoComplete="email"
                     required
                   />
                 </motion.div>
-
               </div>
 
-              {/* ROW 2 */}
-
               <div className="form-row">
-
                 <motion.div
                   className="form-group"
                   variants={revealUp}
                 >
-                  <label htmlFor="phone">
+                  <label htmlFor="contact-phone">
                     Phone Number
                   </label>
 
                   <input
-                    id="phone"
+                    id="contact-phone"
                     type="tel"
                     name="phone"
                     placeholder="Enter your phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    autoComplete="tel"
                   />
                 </motion.div>
 
@@ -627,12 +513,12 @@ function Contact() {
                   className="form-group"
                   variants={revealUp}
                 >
-                  <label htmlFor="subject">
+                  <label htmlFor="contact-subject">
                     Subject
                   </label>
 
                   <input
-                    id="subject"
+                    id="contact-subject"
                     type="text"
                     name="subject"
                     placeholder="What is this about?"
@@ -641,65 +527,65 @@ function Contact() {
                     required
                   />
                 </motion.div>
-
               </div>
-
-              {/* MESSAGE */}
 
               <motion.div
                 className="form-group"
                 variants={revealUp}
               >
-                <label htmlFor="message">
+                <label htmlFor="contact-message">
                   Your Message
                 </label>
 
                 <textarea
-                  id="message"
+                  id="contact-message"
                   name="message"
-                  rows="6"
+                  rows={6}
                   placeholder="Write your message here..."
                   value={formData.message}
                   onChange={handleChange}
                   required
-                ></textarea>
+                />
               </motion.div>
-
-              {/* BUTTON */}
 
               <motion.button
                 type="submit"
                 className="contact-submit"
                 variants={revealUp}
-                whileHover={{
-                  y: -4,
-                }}
-                whileTap={{
-                  scale: 0.97,
-                }}
-                transition={{
-                  duration: 0.2,
-                }}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.2 }}
               >
-                <span>
-                  Send Message
-                </span>
-
+                <span>Send Message</span>
                 <Send size={18} />
               </motion.button>
-
             </motion.form>
-
           </motion.div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          CTA
-      ====================================================== */}
+      <section className="contact-cta">
+        <div className="contact-cta-content">
+          <span>EXPERIENCE RESTAURA</span>
 
-      
+          <h2>
+            Great Food,
+            <em> Great Moments</em>
+          </h2>
+
+          <p>
+            We look forward to welcoming you. Visit us and
+            make your next meal a memorable experience.
+          </p>
+
+          <a
+            href="mailto:hello@restaura.com"
+            className="contact-cta-button"
+          >
+            Get In Touch
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

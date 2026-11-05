@@ -14,10 +14,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import "./Wishlist.css";
 
-/* =========================================================
-   ANIMATION SETTINGS
-========================================================= */
-
 const viewportSettings = {
   amount: 0.2,
   once: false,
@@ -76,10 +72,6 @@ const cardItem = {
   },
 };
 
-/* =========================================================
-   COMPONENT
-========================================================= */
-
 function Wishlist() {
   const {
     wishlistItems,
@@ -88,14 +80,9 @@ function Wishlist() {
 
   const { addToCart } = useCart();
 
-  /* =======================================================
-     EMPTY WISHLIST
-  ====================================================== */
-
   if (wishlistItems.length === 0) {
     return (
       <div className="wishlist-page">
-
         <motion.div
           className="wishlist-empty"
           variants={revealScale}
@@ -103,7 +90,6 @@ function Wishlist() {
           animate="visible"
           transition={smoothTransition}
         >
-
           <motion.div
             className="empty-wishlist-icon"
             initial={{
@@ -127,31 +113,16 @@ function Wishlist() {
 
           <motion.span
             className="wishlist-eyebrow"
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: 0.25,
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
           >
             YOUR COLLECTION
           </motion.span>
 
           <motion.h1
-            initial={{
-              opacity: 0,
-              y: 25,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.7,
               delay: 0.35,
@@ -162,36 +133,18 @@ function Wishlist() {
           </motion.h1>
 
           <motion.p
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: 0.45,
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
           >
             Save your favourite dishes
             here and order them anytime.
           </motion.p>
 
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 25,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: 0.55,
-            }}
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.55 }}
           >
             <Link
               to="/menu"
@@ -201,25 +154,14 @@ function Wishlist() {
               <ArrowRight size={17} />
             </Link>
           </motion.div>
-
         </motion.div>
       </div>
     );
   }
 
-  /* =======================================================
-     WISHLIST ITEMS
-  ====================================================== */
-
   return (
     <div className="wishlist-page">
-
       <div className="wishlist-container">
-
-        {/* =================================================
-            HEADER
-        ================================================== */}
-
         <motion.div
           className="wishlist-header"
           variants={revealUp}
@@ -233,8 +175,7 @@ function Wishlist() {
           </span>
 
           <h1>
-            My{" "}
-            <span>Wishlist</span>
+            My <span>Wishlist</span>
           </h1>
 
           <p>
@@ -243,10 +184,6 @@ function Wishlist() {
           </p>
         </motion.div>
 
-        {/* =================================================
-            ITEMS
-        ================================================== */}
-
         <motion.div
           className="wishlist-grid"
           variants={cardContainer}
@@ -254,11 +191,8 @@ function Wishlist() {
           whileInView="visible"
           viewport={viewportSettings}
         >
-
           <AnimatePresence mode="popLayout">
-
             {wishlistItems.map((item) => (
-
               <motion.article
                 className="wishlist-card"
                 key={item.id}
@@ -280,42 +214,25 @@ function Wishlist() {
                   },
                 }}
               >
-
-                {/* =========================================
-                    IMAGE
-                ========================================== */}
-
                 <div className="wishlist-image">
-
                   <motion.img
                     src={item.image}
                     alt={item.name}
-                    whileHover={{
-                      scale: 1.06,
-                    }}
+                    loading="lazy"
+                    whileHover={{ scale: 1.06 }}
                     transition={{
                       duration: 0.5,
                       ease: [0.22, 1, 0.36, 1],
                     }}
                   />
 
-                  {/* REMOVE */}
-
                   <motion.button
                     type="button"
                     className="wishlist-remove"
-                    onClick={() =>
-                      toggleWishlist(item)
-                    }
-                    whileHover={{
-                      scale: 1.1,
-                    }}
-                    whileTap={{
-                      scale: 0.85,
-                    }}
-                    transition={{
-                      duration: 0.2,
-                    }}
+                    onClick={() => toggleWishlist(item)}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.85 }}
+                    transition={{ duration: 0.2 }}
                     aria-label={`Remove ${item.name} from wishlist`}
                   >
                     <Heart
@@ -324,10 +241,7 @@ function Wishlist() {
                     />
                   </motion.button>
 
-                  {/* FOOD TYPE */}
-
                   <div className="wishlist-food-type">
-
                     <span
                       className={
                         item.type === "VEG"
@@ -336,107 +250,55 @@ function Wishlist() {
                       }
                     />
 
-                    {item.type === "VEG"
-                      ? "VEG"
-                      : "NON-VEG"}
-
+                    {item.type === "VEG" ? "VEG" : "NON-VEG"}
                   </div>
-
                 </div>
 
-                {/* =========================================
-                    CONTENT
-                ========================================== */}
-
                 <div className="wishlist-content">
-
-                  {/* RATING */}
-
                   <motion.div
                     className="wishlist-rating"
-                    initial={{
-                      opacity: 0,
-                      x: -10,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      x: 0,
-                    }}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{
                       once: false,
                       amount: 0.2,
                     }}
-                    transition={{
-                      duration: 0.45,
-                    }}
+                    transition={{ duration: 0.45 }}
                   >
                     <Star
                       size={13}
                       fill="currentColor"
                     />
 
-                    <span>
-                      {item.rating}
-                    </span>
+                    <span>{item.rating}</span>
 
-                    <small>
-                      ({item.reviews})
-                    </small>
+                    <small>({item.reviews})</small>
                   </motion.div>
 
-                  {/* NAME */}
+                  <h3>{item.name}</h3>
 
-                  <h3>
-                    {item.name}
-                  </h3>
-
-                  {/* DESCRIPTION */}
-
-                  <p>
-                    {item.description}
-                  </p>
-
-                  {/* BOTTOM */}
+                  <p>{item.description}</p>
 
                   <div className="wishlist-bottom">
-
-                    <strong>
-                      ₹{item.price}
-                    </strong>
+                    <strong>₹{item.price}</strong>
 
                     <motion.button
                       type="button"
                       className="wishlist-cart-button"
-                      onClick={() =>
-                        addToCart(item)
-                      }
-                      whileHover={{
-                        y: -3,
-                      }}
-                      whileTap={{
-                        scale: 0.95,
-                      }}
-                      transition={{
-                        duration: 0.2,
-                      }}
+                      onClick={() => addToCart(item)}
+                      whileHover={{ y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0.2 }}
                     >
                       <ShoppingBag size={16} />
-
                       Add to Cart
                     </motion.button>
-
                   </div>
-
                 </div>
-
               </motion.article>
-
             ))}
-
           </AnimatePresence>
-
         </motion.div>
-
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
 
 @import "tailwindcss";
@@ -16,26 +17,36 @@
   --color-surface: #11100e;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
+  min-width: 320px;
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-
   background: #080808;
   color: #f5f1e8;
   overflow-x: hidden;
   font-family: "DM Sans", sans-serif;
-
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: clip;
 }
 
 body::-webkit-scrollbar {
@@ -71,7 +82,58 @@ button {
   cursor: pointer;
 }
 
-img {
+button:disabled {
+  cursor: not-allowed;
+}
+
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+img,
+svg,
+video {
   display: block;
   max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+::selection {
+  background: #d4af63;
+  color: #080808;
+}
+
+:focus-visible {
+  outline: 2px solid #d4af63;
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 75px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

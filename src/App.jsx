@@ -1,3 +1,4 @@
+
 import { BrowserRouter } from "react-router-dom";
 
 import Navbar from "./Components/Common/Navbar";
@@ -6,6 +7,7 @@ import ScrollToTop from "./Components/Common/ScrollToTop";
 
 import AppRoutes from "./Routes/AppRoutes";
 import IntroLoader from "./Components/Common/IntroLoader";
+
 import AuthProvider from "./Context/AuthContext";
 import OrderProvider from "./Context/OrderContext";
 import CartProvider from "./Context/CartContext";
@@ -15,8 +17,6 @@ import SidebarProvider from "./Context/SidebarContext";
 function App() {
   return (
     <BrowserRouter basename="/restaurant-application">
-
-      {/* Route change ayinappudu page top ki velladaniki */}
       <ScrollToTop />
 
       <AuthProvider>
@@ -24,7 +24,6 @@ function App() {
           <CartProvider>
             <WishlistProvider>
               <SidebarProvider>
-
                 <Navbar />
                 <IntroLoader />
 
@@ -33,13 +32,11 @@ function App() {
                 </main>
 
                 <Footer />
-
               </SidebarProvider>
             </WishlistProvider>
           </CartProvider>
         </OrderProvider>
       </AuthProvider>
-
     </BrowserRouter>
   );
 }

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { motion} from "framer-motion";
 
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   Award,
   Heart,
@@ -8,16 +8,18 @@ import {
   Users,
   ArrowRight,
 } from "lucide-react";
-
 import "./About.css";
+
 const viewportSettings = {
-  amount: 0.5,
-  once: false,
+  amount: 0.3,
+  once: true,
 };
+
 const smoothTransition = {
   duration: 0.75,
   ease: [0.22, 1, 0.36, 1],
 };
+
 const heroContent = {
   hidden: {
     opacity: 0,
@@ -28,6 +30,7 @@ const heroContent = {
     y: 0,
   },
 };
+
 const revealUp = {
   hidden: {
     opacity: 0,
@@ -38,6 +41,7 @@ const revealUp = {
     y: 0,
   },
 };
+
 const revealLeft = {
   hidden: {
     opacity: 0,
@@ -97,20 +101,11 @@ const valueCard = {
   },
 };
 
-/* =========================================================
-   COMPONENT
-========================================================= */
-
 function About() {
   return (
     <div className="about-page">
-
-      {/* =====================================================
-          HERO
-      ====================================================== */}
-
       <section className="about-hero">
-        <div className="about-hero-overlay"></div>
+        <div className="about-hero-overlay" />
 
         <motion.div
           className="about-hero-content"
@@ -160,12 +155,7 @@ function About() {
         </motion.div>
       </section>
 
-      {/* =====================================================
-          STORY
-      ====================================================== */}
-
       <section className="about-story">
-
         <motion.div
           className="about-story-image"
           variants={revealLeft}
@@ -177,6 +167,7 @@ function About() {
           <img
             src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=85"
             alt="Restaura dining experience"
+            loading="lazy"
           />
         </motion.div>
 
@@ -218,23 +209,14 @@ function About() {
             every visit to feel memorable.
           </p>
 
-          <Link
-            to="/menu"
-            className="about-story-button"
-          >
+          <Link to="/menu" className="about-story-button">
             Explore Our Menu
             <ArrowRight size={17} />
           </Link>
         </motion.div>
-
       </section>
 
-      {/* =====================================================
-          VALUES
-      ====================================================== */}
-
       <section className="about-values">
-
         <motion.div
           className="about-section-heading"
           variants={revealUp}
@@ -243,9 +225,7 @@ function About() {
           viewport={viewportSettings}
           transition={smoothTransition}
         >
-          <span>
-            WHAT DEFINES US
-          </span>
+          <span>WHAT DEFINES US</span>
 
           <h2>
             Our Core
@@ -265,9 +245,6 @@ function About() {
           whileInView="visible"
           viewport={viewportSettings}
         >
-
-          {/* VALUE 1 */}
-
           <motion.div
             className="about-value-card"
             variants={valueCard}
@@ -283,17 +260,13 @@ function About() {
               <Heart size={24} />
             </div>
 
-            <h3>
-              Made With Love
-            </h3>
+            <h3>Made With Love</h3>
 
             <p>
               Every dish is prepared with care, passion,
               and attention to the smallest details.
             </p>
           </motion.div>
-
-          {/* VALUE 2 */}
 
           <motion.div
             className="about-value-card"
@@ -310,17 +283,13 @@ function About() {
               <Award size={24} />
             </div>
 
-            <h3>
-              Premium Quality
-            </h3>
+            <h3>Premium Quality</h3>
 
             <p>
               We carefully choose quality ingredients to
               ensure every bite delivers exceptional flavor.
             </p>
           </motion.div>
-
-          {/* VALUE 3 */}
 
           <motion.div
             className="about-value-card"
@@ -337,17 +306,13 @@ function About() {
               <Sparkles size={24} />
             </div>
 
-            <h3>
-              Authentic Flavors
-            </h3>
+            <h3>Authentic Flavors</h3>
 
             <p>
               Traditional recipes meet thoughtful modern
               techniques for a unique culinary experience.
             </p>
           </motion.div>
-
-          {/* VALUE 4 */}
 
           <motion.div
             className="about-value-card"
@@ -364,25 +329,17 @@ function About() {
               <Users size={24} />
             </div>
 
-            <h3>
-              Our Guests First
-            </h3>
+            <h3>Our Guests First</h3>
 
             <p>
               Your comfort, happiness, and experience are
               always at the heart of what we do.
             </p>
           </motion.div>
-
         </motion.div>
       </section>
 
-      {/* =====================================================
-          EXPERIENCE
-      ====================================================== */}
-
       <section className="about-experience">
-
         <motion.div
           className="about-experience-content"
           variants={revealScale}
@@ -391,9 +348,7 @@ function About() {
           viewport={viewportSettings}
           transition={smoothTransition}
         >
-          <span>
-            THE RESTAURA EXPERIENCE
-          </span>
+          <span>THE RESTAURA EXPERIENCE</span>
 
           <h2>
             Where Every Meal
@@ -405,17 +360,12 @@ function About() {
             celebrations, and moments worth remembering.
           </p>
 
-          <Link
-            to="/contact"
-            className="about-experience-button"
-          >
+          <Link to="/contact" className="about-experience-button">
             Get In Touch
             <ArrowRight size={17} />
           </Link>
         </motion.div>
-
       </section>
-
     </div>
   );
 }
