@@ -1,3 +1,4 @@
+
 .home-page {
   width: 100%;
   overflow: hidden;
@@ -5,7 +6,9 @@
   color: #f5f1e8;
 }
 
-.home-page * {
+.home-page *,
+.home-page *::before,
+.home-page *::after {
   box-sizing: border-box;
 }
 
@@ -21,11 +24,8 @@
   text-transform: uppercase;
 }
 
-/* Hero */
-
 .home-hero {
   position: relative;
-  min-height: calc(100vh - 78px);
   min-height: max(650px, calc(100svh - 78px));
   display: flex;
   align-items: center;
@@ -91,19 +91,11 @@
 .hero-line {
   width: 38px;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(212, 175, 99, 0.75)
-  );
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 99, 0.75));
 }
 
 .hero-line:last-child {
-  background: linear-gradient(
-    90deg,
-    rgba(212, 175, 99, 0.75),
-    transparent
-  );
+  background: linear-gradient(90deg, rgba(212, 175, 99, 0.75), transparent);
 }
 
 .hero-kicker {
@@ -158,11 +150,7 @@
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  transition:
-    transform 0.3s ease,
-    background 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-primary-button {
@@ -233,8 +221,6 @@
   background: linear-gradient(to bottom, #d4af63, transparent);
   animation: scrollPulse 1.8s ease-in-out infinite;
 }
-
-/* Intro */
 
 .home-intro {
   width: 100%;
@@ -321,8 +307,6 @@
   gap: 13px;
 }
 
-/* Featured */
-
 .featured-section {
   width: 100%;
   max-width: 1240px;
@@ -361,9 +345,7 @@
   color: #999;
   font-size: 9px;
   font-weight: 700;
-  transition:
-    color 0.25s ease,
-    gap 0.25s ease;
+  transition: color 0.25s ease, gap 0.25s ease;
 }
 
 .view-menu-link:hover {
@@ -383,10 +365,7 @@
   background: linear-gradient(180deg, #131311, #0e0e0d);
   border: 1px solid rgba(255, 255, 255, 0.065);
   border-radius: 15px;
-  transition:
-    transform 0.45s ease,
-    border-color 0.35s ease,
-    box-shadow 0.45s ease;
+  transition: transform 0.45s ease, border-color 0.35s ease, box-shadow 0.45s ease;
 }
 
 .featured-card:hover {
@@ -417,11 +396,7 @@
 .featured-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.7),
-    transparent 58%
-  );
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 58%);
 }
 
 .featured-tag {
@@ -480,8 +455,6 @@
   color: #d4af63;
   font-size: 15px;
 }
-
-/* Experience */
 
 .experience-section {
   position: relative;
@@ -560,9 +533,7 @@
   border: 1px solid rgba(212, 175, 99, 0.25);
   border-radius: 50%;
   color: #d4af63;
-  transition:
-    background 0.3s ease,
-    transform 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .experience-card:hover .experience-icon {
@@ -585,8 +556,6 @@
   font-size: 10px;
   line-height: 1.7;
 }
-
-/* Story */
 
 .home-story {
   display: grid;
@@ -611,12 +580,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.08),
-    transparent 50%,
-    rgba(0, 0, 0, 0.4)
-  );
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.08), transparent 50%, rgba(0, 0, 0, 0.4));
   pointer-events: none;
 }
 
@@ -667,10 +631,7 @@
   color: #d4af63;
   font-size: 9px;
   font-weight: 700;
-  transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
 .story-button:hover {
@@ -678,8 +639,6 @@
   color: #101010;
   transform: translateY(-3px);
 }
-
-/* CTA */
 
 .home-cta {
   position: relative;
@@ -689,12 +648,7 @@
   justify-content: center;
   overflow: hidden;
   padding: 80px 20px;
-  background: radial-gradient(
-    circle at center,
-    #241c0f 0%,
-    #11100d 31%,
-    #080808 73%
-  );
+  background: radial-gradient(circle at center, #241c0f 0%, #11100d 31%, #080808 73%);
   border-top: 1px solid rgba(212, 175, 99, 0.1);
 }
 
@@ -755,10 +709,7 @@
   color: #101010;
   font-size: 10px;
   font-weight: 700;
-  transition:
-    background 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .cta-button:hover {
@@ -784,8 +735,6 @@
   right: 20%;
   bottom: 25%;
 }
-
-/* Animations */
 
 @keyframes heroImageReveal {
   from {
@@ -825,8 +774,6 @@
     transform-origin: top;
   }
 }
-
-/* Tablet */
 
 @media (max-width: 1024px) {
   .home-intro,
@@ -876,9 +823,8 @@
   }
 
   .featured-card:last-child {
-    grid-column: 1 / -1;
-    width: calc(50% - 10px);
-    justify-self: center;
+    grid-column: auto;
+    width: 100%;
   }
 
   .experience-grid {
@@ -907,9 +853,7 @@
   }
 }
 
-/* Mobile */
-
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .home-hero {
     min-height: max(610px, calc(100svh - 70px));
   }
@@ -968,7 +912,7 @@
   }
 
   .home-intro {
-    padding: 75px 20px;
+    padding: 65px 18px;
   }
 
   .intro-label {
@@ -977,32 +921,42 @@
     letter-spacing: 1.5px;
   }
 
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
   .intro-heading h2 {
-    font-size: clamp(38px, 10vw, 48px);
+    font-size: clamp(36px, 9vw, 46px);
+  }
+
+  .intro-text {
+    max-width: 100%;
   }
 
   .intro-text p {
-    font-size: 11px;
+    font-size: 12px;
+    line-height: 1.8;
   }
 
   .featured-section {
-    padding: 75px 20px 85px;
+    padding: 65px 18px 75px;
   }
 
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
-    gap: 18px;
-    margin-bottom: 30px;
+    gap: 15px;
+    margin-bottom: 25px;
   }
 
   .section-heading h2 {
-    font-size: clamp(35px, 9vw, 43px);
+    font-size: clamp(34px, 8vw, 42px);
   }
 
   .featured-grid {
     grid-template-columns: 1fr;
-    gap: 17px;
+    gap: 18px;
   }
 
   .featured-card:last-child {
@@ -1011,11 +965,11 @@
   }
 
   .featured-image {
-    height: 260px;
+    height: clamp(220px, 65vw, 300px);
   }
 
   .featured-content {
-    padding: 18px;
+    padding: 17px;
   }
 
   .featured-content h3 {
@@ -1023,11 +977,11 @@
   }
 
   .experience-section {
-    padding: 80px 20px;
+    padding: 70px 18px;
   }
 
   .experience-header h2 {
-    font-size: clamp(35px, 9vw, 43px);
+    font-size: clamp(34px, 8vw, 44px);
   }
 
   .experience-header > p {
@@ -1035,19 +989,23 @@
   }
 
   .experience-grid {
-    grid-template-columns: 1fr;
-    margin-top: 45px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 35px;
   }
 
   .experience-card,
   .experience-card:nth-child(2) {
-    min-height: auto;
-    padding: 26px 20px;
-    border-right: none;
+    min-height: 210px;
+    padding: 22px 14px;
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  .experience-card:last-child {
+  .experience-card:nth-child(even) {
+    border-right: none;
+  }
+
+  .experience-card:nth-last-child(-n + 2) {
     border-bottom: none;
   }
 
@@ -1055,17 +1013,26 @@
     margin-top: 20px;
   }
 
+  .experience-card h3 {
+    font-size: 17px;
+  }
+
+  .experience-card p {
+    font-size: 10px;
+  }
+
   .home-story {
-    padding: 80px 20px;
-    gap: 35px;
+    grid-template-columns: 1fr;
+    padding: 65px 18px;
+    gap: 28px;
   }
 
   .story-image {
-    height: clamp(260px, 75vw, 380px);
+    height: clamp(230px, 65vw, 340px);
   }
 
   .story-content h2 {
-    font-size: clamp(35px, 9vw, 43px);
+    font-size: clamp(34px, 8vw, 44px);
   }
 
   .story-content > p {
@@ -1074,12 +1041,12 @@
   }
 
   .home-cta {
-    min-height: 420px;
-    padding: 70px 18px;
+    min-height: 380px;
+    padding: 65px 18px;
   }
 
   .cta-content h2 {
-    font-size: clamp(45px, 12vw, 58px);
+    font-size: clamp(44px, 11vw, 58px);
   }
 
   .cta-content p {
@@ -1104,8 +1071,6 @@
     height: 480px;
   }
 }
-
-/* Small Mobile */
 
 @media (max-width: 380px) {
   .hero-content {
@@ -1148,8 +1113,26 @@
     height: 225px;
   }
 
-  .experience-header h2 {
-    font-size: 34px;
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card,
+  .experience-card:nth-child(2),
+  .experience-card:nth-child(even),
+  .experience-card:nth-last-child(-n + 2) {
+    min-height: auto;
+    padding: 24px 18px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .experience-card:last-child {
+    border-bottom: none;
+  }
+
+  .experience-card h3 {
+    font-size: 18px;
   }
 
   .story-content h2 {
@@ -1160,8 +1143,6 @@
     font-size: 44px;
   }
 }
-
-/* Reduced Motion */
 
 @media (prefers-reduced-motion: reduce) {
   .hero-background,
