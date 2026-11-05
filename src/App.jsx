@@ -14,7 +14,7 @@ import SidebarProvider from "./Context/SidebarContext";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/restaurant-application">
 
       {/* Route change ayinappudu page top ki velladaniki */}
       <ScrollToTop />
