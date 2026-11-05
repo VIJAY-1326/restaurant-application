@@ -16,7 +16,7 @@ import SidebarProvider from "./Context/SidebarContext";
 
 function App() {
   return (
-    <BrowserRouter basename="/restaurant-application">
+    <BrowserRouter>
       <ScrollToTop />
 
       <AuthProvider>
