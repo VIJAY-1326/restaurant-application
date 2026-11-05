@@ -1,0 +1,366 @@
+.profile-page {
+  min-height: 100vh;
+
+  padding: 140px 25px 80px;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      #171108,
+      #080808 45%
+    );
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 1050px;
+
+  margin: auto;
+}
+
+.profile-heading span {
+  color: #f5b041;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+}
+
+.profile-heading h1 {
+  margin-top: 8px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 42px;
+}
+
+.profile-heading p {
+  margin-top: 8px;
+
+  color: #666;
+
+  font-size: 12px;
+}
+
+.profile-grid {
+  margin-top: 35px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 20px;
+}
+
+.profile-main-card,
+.profile-activity-card,
+.profile-orders-link {
+  border: 1px solid #242424;
+
+  border-radius: 14px;
+
+  background: #101010;
+}
+
+.profile-main-card {
+  padding: 35px;
+}
+
+.profile-avatar {
+  width: 75px;
+  height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f5b041,
+      #c98217
+    );
+
+  color: #080808;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.profile-main-card h2 {
+  margin-top: 20px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 28px;
+}
+
+.profile-role {
+  display: inline-block;
+
+  margin-top: 6px;
+
+  color: #f5b041;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.profile-divider {
+  height: 1px;
+
+  margin: 25px 0;
+
+  background: #242424;
+}
+
+.profile-detail {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-top: 17px;
+
+  color: #f5b041;
+}
+
+.profile-detail div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.profile-detail small {
+  color: #555;
+
+  font-size: 9px;
+}
+
+.profile-detail strong {
+  color: #bbb;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.profile-logout-button {
+  width: 100%;
+
+  height: 43px;
+
+  margin-top: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border: 1px solid #2b2b2b;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: #888;
+
+  font-size: 10px;
+
+  transition: 0.2s;
+}
+
+.profile-logout-button:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+/* ACTIVITY */
+
+.profile-activity {
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.profile-activity-card {
+  padding: 25px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.activity-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background:
+    rgba(245, 176, 65, 0.08);
+
+  color: #f5b041;
+}
+
+.profile-activity-card div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.profile-activity-card span {
+  color: #555;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.profile-activity-card strong {
+  color: #fff;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 28px;
+}
+
+.profile-orders-link {
+  padding: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #aaa;
+
+  transition: 0.25s;
+}
+
+.profile-orders-link > div {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+}
+
+.profile-orders-link > div > svg {
+  color: #f5b041;
+}
+
+.profile-orders-link div div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.profile-orders-link strong {
+  color: #fff;
+
+  font-size: 12px;
+}
+
+.profile-orders-link span {
+  color: #666;
+
+  font-size: 9px;
+}
+
+.profile-orders-link > svg {
+  color: #f5b041;
+
+  transition: 0.2s;
+}
+
+.profile-orders-link:hover {
+  border-color:
+    rgba(245, 176, 65, 0.4);
+}
+
+.profile-orders-link:hover > svg {
+  transform: translateX(4px);
+}
+
+/* LOGIN */
+
+.profile-login-box {
+  min-height: 60vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: #666;
+}
+
+.profile-login-box h1 {
+  margin-top: 15px;
+
+  color: #fff;
+
+  font-family:
+    "Playfair Display",
+    serif;
+}
+
+.profile-login-box p {
+  margin: 8px 0 20px;
+}
+
+.profile-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 12px 18px;
+
+  border-radius: 8px;
+
+  background: #f5b041;
+
+  color: #080808;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .profile-page {
+    padding: 120px 15px 60px;
+  }
+
+  .profile-heading h1 {
+    font-size: 34px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}

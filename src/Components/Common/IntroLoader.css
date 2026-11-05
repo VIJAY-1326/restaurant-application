@@ -1,0 +1,630 @@
+/* =========================================================
+   RESTAURA — MINIMAL LUXURY INTRO
+   CSS ONLY — NO FRAMER MOTION
+========================================================= */
+
+.intro-loader {
+  position: fixed;
+  inset: 0;
+
+  z-index: 99999;
+
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(212, 175, 99, 0.055),
+      transparent 32%
+    ),
+    #080808;
+
+  color: #f5f1e8;
+
+  animation:
+    intro-loader-enter 0.8s ease both;
+}
+
+
+/* =========================================================
+   LOADER EXIT
+========================================================= */
+
+.intro-loader.is-exiting {
+  animation:
+    intro-loader-exit 0.9s cubic-bezier(
+      0.76,
+      0,
+      0.24,
+      1
+    ) forwards;
+}
+
+@keyframes intro-loader-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes intro-loader-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.intro-loader-glow {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 520px;
+  height: 520px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(212, 175, 99, 0.055),
+      transparent 68%
+    );
+
+  pointer-events: none;
+
+  animation:
+    intro-glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes intro-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.intro-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: min(720px, 88vw);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   EST
+========================================================= */
+
+.intro-est {
+  color: #d4af63;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.5em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  animation:
+    intro-fade-up 0.6s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.15s forwards;
+}
+
+
+/* =========================================================
+   DOT
+========================================================= */
+
+.intro-dot {
+  width: 4px;
+  height: 4px;
+
+  margin-top: 27px;
+
+  border-radius: 50%;
+
+  background: #d4af63;
+
+  box-shadow:
+    0 0 16px rgba(212, 175, 99, 0.45);
+
+  opacity: 0;
+
+  transform: scale(0);
+
+  animation:
+    intro-dot-in 0.5s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.35s forwards;
+}
+
+@keyframes intro-dot-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.intro-logo-wrap {
+  width: 100%;
+
+  margin-top: 32px;
+
+  overflow: hidden;
+}
+
+.intro-logo {
+  margin: 0;
+
+  color: #f5f1e8;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(58px, 10vw, 132px);
+
+  font-weight: 500;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.065em;
+
+  white-space: nowrap;
+
+  opacity: 0;
+
+  transform:
+    translateY(35px)
+    scale(0.96);
+
+  animation:
+    intro-logo-in 1s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    0.45s forwards;
+}
+
+@keyframes intro-logo-in {
+  from {
+    opacity: 0;
+    transform:
+      translateY(35px)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   LOGO LINE
+========================================================= */
+
+.intro-logo-line {
+  width: 0;
+  height: 1px;
+
+  margin: 24px auto 0;
+
+  max-width: 360px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #d4af63 20%,
+      #d4af63 80%,
+      transparent
+    );
+
+  opacity: 0;
+
+  animation:
+    intro-line-in 0.9s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.8s forwards;
+}
+
+@keyframes intro-line-in {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.intro-subtitle {
+  margin-top: 22px;
+
+  color: rgba(245, 241, 232, 0.55);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transform: translateY(15px);
+
+  animation:
+    intro-subtitle-in 0.8s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    1s forwards;
+}
+
+@keyframes intro-subtitle-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.15em;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: 0.42em;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.intro-loading {
+  width: min(260px, 65vw);
+
+  margin-top: 72px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  opacity: 0;
+
+  animation:
+    intro-loading-in 0.5s ease
+    1.25s forwards;
+}
+
+@keyframes intro-loading-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.intro-loading span {
+  color: rgba(245, 241, 232, 0.34);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 0.3em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.intro-progress {
+  position: relative;
+
+  width: 100%;
+  height: 1px;
+
+  margin-top: 13px;
+
+  overflow: hidden;
+
+  background: rgba(245, 241, 232, 0.1);
+}
+
+.intro-progress-bar {
+  width: 0;
+  height: 100%;
+
+  background: #d4af63;
+
+  box-shadow:
+    0 0 10px rgba(212, 175, 99, 0.35);
+
+  animation:
+    intro-progress 1.1s
+    ease-in-out
+    1.3s forwards;
+}
+
+@keyframes intro-progress {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   CORNER DETAILS
+========================================================= */
+
+.intro-corner {
+  position: absolute;
+
+  z-index: 4;
+
+  color: rgba(245, 241, 232, 0.25);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 0.3em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+}
+
+.intro-corner-top-left {
+  top: 32px;
+  left: 38px;
+
+  color: #d4af63;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 14px;
+
+  letter-spacing: 0;
+
+  animation:
+    intro-corner-in 0.5s ease
+    0.8s forwards;
+}
+
+.intro-corner-top-right {
+  top: 34px;
+  right: 40px;
+
+  animation:
+    intro-corner-in 0.5s ease
+    0.9s forwards;
+}
+
+.intro-corner-bottom-left {
+  bottom: 32px;
+  left: 38px;
+
+  animation:
+    intro-corner-in 0.5s ease
+    1s forwards;
+}
+
+.intro-corner-bottom-right {
+  right: 40px;
+  bottom: 32px;
+
+  animation:
+    intro-corner-in 0.5s ease
+    1.1s forwards;
+}
+
+@keyframes intro-corner-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   SHARED FADE UP
+========================================================= */
+
+@keyframes intro-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  .intro-loader-glow {
+    width: 350px;
+    height: 350px;
+  }
+
+  .intro-content {
+    width: 88vw;
+  }
+
+  .intro-est {
+    font-size: 8px;
+    letter-spacing: 0.38em;
+  }
+
+  .intro-dot {
+    margin-top: 22px;
+  }
+
+  .intro-logo-wrap {
+    margin-top: 25px;
+  }
+
+  .intro-logo {
+    font-size: clamp(46px, 13vw, 85px);
+  }
+
+  .intro-logo-line {
+    margin-top: 18px;
+  }
+
+  .intro-subtitle {
+    margin-top: 17px;
+
+    font-size: 8px;
+  }
+
+  .intro-loading {
+    margin-top: 55px;
+  }
+
+  .intro-corner-top-left {
+    top: 22px;
+    left: 22px;
+  }
+
+  .intro-corner-top-right {
+    top: 24px;
+    right: 22px;
+  }
+
+  .intro-corner-bottom-left {
+    bottom: 22px;
+    left: 22px;
+  }
+
+  .intro-corner-bottom-right {
+    right: 22px;
+    bottom: 22px;
+
+    font-size: 6px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .intro-logo {
+    font-size: 43px;
+  }
+
+  .intro-loading {
+    width: 220px;
+  }
+
+  .intro-loading span {
+    font-size: 6px;
+    letter-spacing: 0.22em;
+  }
+
+  .intro-corner {
+    font-size: 6px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-loader *,
+  .intro-loader {
+    animation: none !important;
+    transition: none !important;
+  }
+}
